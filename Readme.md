@@ -126,6 +126,39 @@ optimal available evidence — and it has found zero counterexamples."*
 
 ---
 
+## Derived Work: `thermal_controller.c`
+
+Building this scanner surfaced a structural pattern that applies beyond
+number theory. Three principles from `riemann_explorer.c` map onto
+embedded sensor fusion:
+
+| Riemann-Siegel (this repo) | `thermal_controller.c` |
+|---|---|
+| `N = floor(sqrt(t/2π))` terms | `adaptive_window_size(derivative)` |
+| Stop at `theta_error_bound(t)` | Stop at `noise_floor_bound(N, sigma)` |
+| Further iteration adds entropy | `entropy_cost(wasted_iters)` |
+
+**The math is not the same.** The noise floor result is CLT
+(`sigma/sqrt(N)`), not Riemann-Siegel. The Landauer accounting is a
+heuristic proxy. The connection is design philosophy, not derivation:
+*iterate until you hit the precision floor, then stop — past that point
+you generate heat without gaining information.*
+
+```bash
+make thermal_controller
+./thermal_controller          # all three scenarios
+./thermal_controller 0        # step response only
+./thermal_controller 2        # slow sinusoid only
+```
+
+---
+
+## Author
+
+Seunghyeon Lee <hyeon3125@gmail.com>
+
+---
+
 ## References
 
 - Chaitin, G. (1995). *Randomness in Arithmetic.* Scientific American.

@@ -1,3 +1,4 @@
 riemann_explorer
 *.o
 *.out
+thermal_controller

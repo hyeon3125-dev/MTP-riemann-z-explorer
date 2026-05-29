@@ -18,7 +18,7 @@
  *        defaults: t_max=200.0, dt=0.005  (toy range; increase for production)
  *
  * SPDX-License-Identifier: GPL-2.0-only
- * Author: L0 <torvalds@scalar.kr>
+ * Author: Seunghyeon Lee <hyeon3125@gmail.com>
  */
 
 #include <stdio.h>
